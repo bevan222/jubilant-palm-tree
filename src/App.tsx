@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TodoList from './components/TodoList';
 import SearchTaskBar from './components/SearchTaskBar';
 import NewTask from './components/NewTask';
 import { Task } from './type';
 import SortButton from './components/SortButton';
-import { useAppDispatch, useAppSelector } from './redux/store';
-import { fetchTasks, modSearchMode, modSortMode } from './redux/slices/todoSlice';
+import { useAppDispatch } from './redux/store';
+import { modSearchMode, modSortMode } from './redux/slices/todoSlice';
 
 function App() {
   const searchOptions = [{value:1, label:'Time'},{value:2, label:'Creator'} ];
   const sortOptions = [{value:1, label:'CreateTime'},{value:2, label:'DueDate'},{value:3, label:'Creator'},{value:4, label:'ID'},{value:5, label:'Todo'},{value:6, label:'Complete'}];
   const [searchOptionSelect, setSearchOptionSelect] = useState(searchOptions[0])
   const [sortOptionSelect, setSortOptionSelect] = useState(sortOptions[0])
-  const [tasks, setTasks] = useState<Array<Task>>([])
   const [showSearchBar, setShowSearchBar] = useState(false)
   const dispatch = useAppDispatch()
 

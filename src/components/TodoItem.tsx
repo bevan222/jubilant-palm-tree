@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Task } from "../type";
 import TaskDetailModal from "./TaskDetailModal";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { fetchTasks, modTaskComplete } from "../redux/slices/todoSlice";
 
 interface TodoItemProps {
-    task: Task,
-    sortOption: number,
+    task: Task
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({task, sortOption}) => {
+const TodoItem: React.FC<TodoItemProps> = ({task}) => {
     const [showDetail, setShowDetail] = useState(false)
     const [complete, setComplete] = useState(task.complete)
     const dispatch = useAppDispatch()

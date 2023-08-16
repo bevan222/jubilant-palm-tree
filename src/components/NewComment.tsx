@@ -51,7 +51,6 @@ const NewComment: React.FC<NewCommentProps>  = ({taskId}) => {
         <div className="h-full rounded-xl">
             <form className="flex items-center pl-4" onSubmit={handleNewTaskSubmit}>
                 <input className="w-full h-full px-2 py-2 rounded-l-lg" placeholder="Add a comment" onChange={handleCommentMessageChange} value={commentMessage}></input>
-                {/* 選user */}
                 <DropDownButton options={users.userOption} optionValue={creatorSelect} onSelect={handleCreatorSelect}></DropDownButton>
                 <button className="text-white my-6 bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-r-lg text-sm w-auto px-5 py-2.5 text-center">submit</button>
             </form>

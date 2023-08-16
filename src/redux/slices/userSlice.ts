@@ -9,7 +9,7 @@ interface UserState {
     error: string;
 }
 
-const initialState = {
+const initialState: UserState = {
     userList: [],
     loading: false,
     userOption: [],

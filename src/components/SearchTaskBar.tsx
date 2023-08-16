@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import DropDownButton from "./DropDownButton";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { fetchTasks, modSearchEndDate, modSearchStartDate, modSearchString } from "../redux/slices/todoSlice";
@@ -11,9 +11,6 @@ interface SearchTaskBarProps {
 }
 
 const SearchTaskBar: React.FC<SearchTaskBarProps> = ({ options, optionValue, onSelect, show } ) => {
-
-    const [searchTimePeriod, setSearchTimePeriod] = useState({startDate:'', endDate:''})
-    const [searchString, setSearchString] = useState('')
     const dispatch = useAppDispatch()
     const tasks = useAppSelector((state) => state.todos)
 
@@ -24,7 +21,6 @@ const SearchTaskBar: React.FC<SearchTaskBarProps> = ({ options, optionValue, onS
 
     const handleSearchTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        setSearchTimePeriod((prevData) => ({ ...prevData, [name]: value }));
         console.log(event.target)
         if(name === 'startDate'){
             dispatch(modSearchStartDate(value))
@@ -35,7 +31,6 @@ const SearchTaskBar: React.FC<SearchTaskBarProps> = ({ options, optionValue, onS
     };
 
     const handleSearchStringChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchString(event.target.value)
         dispatch(modSearchString(event.target.value))
     };
 

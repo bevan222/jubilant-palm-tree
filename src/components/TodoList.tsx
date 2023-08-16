@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import TodoItem from './TodoItem'
-import { Task } from "../type";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { fetchTasks } from "../redux/slices/todoSlice";
 
@@ -29,7 +28,7 @@ const TodoList: React.FC<TodoListProps> = ({ sortOption}) => {
             </li>
             {
                 tasks.taskList?.map(( task )=>(
-                    <TodoItem task={task} key={task.id} sortOption={sortOption}/>
+                    <TodoItem task={task} key={task.id} />
                 ))
             }
         </ul>

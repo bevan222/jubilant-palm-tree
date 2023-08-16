@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DropDownButton from "./DropDownButton";
-import { Task, User } from "../type";
+import { Task } from "../type";
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import { fetchUsers } from '../redux/slices/userSlice'
 import { createTask, fetchTasks } from '../redux/slices/todoSlice'
