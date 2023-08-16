@@ -95,7 +95,7 @@ const TaskDetailModal: React.FC<TaskDetailProps> = ({ show, setShowModal, task }
                                 <div className="relative flex-auto px-4 py-4 overflow-auto text-lg h-96">
                                     <div className="flex">
                                         <h1 className="flex items-center px-4">Task Detail</h1>
-                                        <button type="button" className="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center mx-4" onClick={handleTaskCompleteClick}>Complete</button>
+                                        {!task.complete && <button type="button" className="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center mx-4" onClick={handleTaskCompleteClick}>Complete</button>}
                                     </div>
                                     <form className="p-4 m-4 bg-gray-100 shadow-inner" onSubmit={handleModTaskSubmit}>
                                         <div className="mb-6">
