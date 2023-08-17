@@ -8,7 +8,7 @@ interface CommentListProps {
     taskId: number,
 }
 
-const CommentList: React.FC<CommentListProps> = ({comments, taskId}) => {
+const CommentList: React.FC<CommentListProps> = ({ comments, taskId }) => {
     return (
         <React.Fragment>
             <div className="flex items-center pt-4">
@@ -16,13 +16,13 @@ const CommentList: React.FC<CommentListProps> = ({comments, taskId}) => {
             </div>
             <div className="p-4 m-4 bg-gray-100 shadow-inner">
                 {
-                    comments.map((comment:Comment) => {
+                    comments.map((comment: Comment) => {
                         return (
-                            <CommentItem key={comment.id} comment={comment}/>
+                            <CommentItem key={comment.id} comment={comment} />
                         )
                     })
                 }
-                <NewComment taskId={taskId}/>
+                <NewComment taskId={taskId} />
             </div>
         </React.Fragment>
     )

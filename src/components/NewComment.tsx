@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import DropDownButton from "./DropDownButton";
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import { fetchUsers } from '../redux/slices/userSlice'
@@ -8,42 +8,42 @@ interface NewCommentProps {
     taskId: number
 }
 
-const NewComment: React.FC<NewCommentProps>  = ({taskId}) => {
+const NewComment: React.FC<NewCommentProps> = ({ taskId }) => {
 
     const [commentMessage, setCommentMessage] = React.useState('')
-    const [userOptions, setUserOptions] = useState<Array<{value: number, label: string}>>([])
-    const [creatorSelect, setCreatorSelect] = useState<{value:number, label:string}>()
+    const [userOptions, setUserOptions] = useState<Array<{ value: number, label: string }>>([])
+    const [creatorSelect, setCreatorSelect] = useState<{ value: number, label: string }>()
     const dispatch = useAppDispatch()
     const users = useAppSelector((state) => state.user)
     const comments = useAppSelector((state) => state.comment)
-    
+
     useEffect(() => {
         dispatch(fetchUsers())
-    },[])
+    }, [])
 
     const handleNewTaskSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if(creatorSelect === undefined){
+        if (creatorSelect === undefined) {
             alert('select a creator')
             return
         }
-        if(commentMessage === ''){
+        if (commentMessage === '') {
             alert('please enter a comment')
             return
         }
-        dispatch(createComment({creatorId: creatorSelect.value, message: commentMessage, belongTaskId: taskId}))
-        .then((res)=>{
-            alert(res.payload.message)
-            dispatch(fetchComments({taskId: taskId}))
-            setCommentMessage('')
-        }) 
+        dispatch(createComment({ creatorId: creatorSelect.value, message: commentMessage, belongTaskId: taskId }))
+            .then((res) => {
+                alert(res.payload.message)
+                dispatch(fetchComments({ taskId: taskId }))
+                setCommentMessage('')
+            })
     }
 
     const handleCommentMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCommentMessage(event.target.value)
     };
 
-    const handleCreatorSelect = (option: {value:number, label:string}) => {
+    const handleCreatorSelect = (option: { value: number, label: string }) => {
         setCreatorSelect(option)
     };
 

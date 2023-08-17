@@ -3,7 +3,7 @@ export interface Task {
     taskName: string,
     createTime: Date,
     dueDate: Date | null,
-    creator: string ,
+    creator: string,
     complete: boolean,
     description: string,
     creatorId: number,

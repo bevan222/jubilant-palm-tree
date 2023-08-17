@@ -7,14 +7,14 @@ interface TodoListProps {
     sortOption: number,
 }
 
-const TodoList: React.FC<TodoListProps> = ({ sortOption}) => {
+const TodoList: React.FC<TodoListProps> = ({ sortOption }) => {
 
     const dispatch = useAppDispatch()
     const tasks = useAppSelector((state) => state.todos)
-    
+
     useEffect(() => {
-        dispatch(fetchTasks({searchMode:tasks.searchData.searchMode, sortMode:tasks.sortData.sortMode, startDate:tasks.searchData.searchStartDate, endDate:tasks.searchData.searchEndDate, searchString:tasks.searchData.searchString}))
-    },[])
+        dispatch(fetchTasks({ searchMode: tasks.searchData.searchMode, sortMode: tasks.sortData.sortMode, startDate: tasks.searchData.searchStartDate, endDate: tasks.searchData.searchEndDate, searchString: tasks.searchData.searchString }))
+    }, [])
 
     return (
         <ul className="my-4 max-w-screen">
@@ -27,7 +27,7 @@ const TodoList: React.FC<TodoListProps> = ({ sortOption}) => {
                 <div className="w-1/5 sm:w-1/6">Detail</div>
             </li>
             {
-                tasks.taskList?.map(( task )=>(
+                tasks.taskList?.map((task) => (
                     <TodoItem task={task} key={task.id} />
                 ))
             }
